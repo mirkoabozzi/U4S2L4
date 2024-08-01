@@ -1,4 +1,4 @@
-package mirkoabozzi;
+package mirkoabozzi.entities;
 
 import java.util.Random;
 

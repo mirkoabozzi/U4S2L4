@@ -1,4 +1,4 @@
-package mirkoabozzi;
+package mirkoabozzi.entities;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
