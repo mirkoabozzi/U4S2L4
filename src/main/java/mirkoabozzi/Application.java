@@ -6,6 +6,7 @@ import mirkoabozzi.entities.Product;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Predicate;
@@ -96,6 +97,11 @@ public class Application {
         orderByClient.forEach((customer, orders) -> System.out.println(customer + " - " + orders));
 
 
+        System.out.println("-----------------Lezione U4S2L4 Es.2---------------");
+
+        List<Product> expansiveProduct =  lista1.stream().sorted(Comparator.comparingDouble(Product::getPrice).reversed()).limit(5).toList();
+
+        expansiveProduct.forEach(System.out::println);
 
     }
 }
