@@ -7,6 +7,7 @@ import mirkoabozzi.entities.Product;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
@@ -88,7 +89,11 @@ public class Application {
 
 //        System.out.println(listaEs4);
 
-        System.out.println("-----------------Lezione U4S2L4---------------");
+        System.out.println("-----------------Lezione U4S2L4 Es.1---------------");
+
+        Map<Customer, List<Order>> orderByClient = orderList.stream().collect(Collectors.groupingBy(order -> order.getCustomer()));
+
+        orderByClient.forEach((customer, orders) -> System.out.println(customer + " - " + orders));
 
 
 
