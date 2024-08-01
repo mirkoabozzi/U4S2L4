@@ -1,5 +1,6 @@
 package mirkoabozzi;
 
+import jdk.jfr.Category;
 import mirkoabozzi.entities.Customer;
 import mirkoabozzi.entities.Order;
 import mirkoabozzi.entities.Product;
@@ -96,12 +97,29 @@ public class Application {
 
         orderByClient.forEach((customer, orders) -> System.out.println(customer + " - " + orders));
 
-
         System.out.println("-----------------Lezione U4S2L4 Es.2---------------");
+
+//        Map<Customer,Double> venditePerCliente = orderList
+
+
+
+        System.out.println("-----------------Lezione U4S2L4 Es.3---------------");
 
         List<Product> expansiveProduct =  lista1.stream().sorted(Comparator.comparingDouble(Product::getPrice).reversed()).limit(5).toList();
 
         expansiveProduct.forEach(System.out::println);
 
+        System.out.println("-----------------Lezione U4S2L4 Es.4---------------");
+
+
+        Map<Order, Double> mediaImporti = orderList.stream().collect(Collectors.groupingBy(order -> order, Collectors.averagingDouble(order -> order.getProducts().stream().collect(Collectors.averagingDouble(Product::getPrice)))));
+
+        mediaImporti.forEach((order, media) -> System.out.println("Order: " + order.getId() + ", average price: " + media));
+
+
+        System.out.println("-----------------Lezione U4S2L4 Es.5---------------");
+
+        Map<String,Double> sommaProdottiPerCategoria= lista1.stream().collect(Collectors.groupingBy(Product::getCategory, Collectors.summingDouble(Product::getPrice)));
+        sommaProdottiPerCategoria.forEach((category, totale) ->System.out.println(category + " - "+ totale));
     }
 }
