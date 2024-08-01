@@ -1,10 +1,10 @@
 package mirkoabozzi;
 
-import jdk.jfr.Category;
 import mirkoabozzi.entities.Customer;
 import mirkoabozzi.entities.Order;
 import mirkoabozzi.entities.Product;
 
+import java.io.File;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -99,14 +99,14 @@ public class Application {
 
         System.out.println("-----------------Lezione U4S2L4 Es.2---------------");
 
-        Map<Customer,Double> venditePerCliente = orderList.stream().collect(Collectors.groupingBy(Order::getCustomer, Collectors.summingDouble(order-> order.getProducts().stream().mapToDouble(product->product.getPrice()).sum())));
+        Map<Customer, Double> venditePerCliente = orderList.stream().collect(Collectors.groupingBy(Order::getCustomer, Collectors.summingDouble(order -> order.getProducts().stream().mapToDouble(product -> product.getPrice()).sum())));
 
         System.out.println(venditePerCliente);
 
 
         System.out.println("-----------------Lezione U4S2L4 Es.3---------------");
 
-        List<Product> expansiveProduct =  lista1.stream().sorted(Comparator.comparingDouble(Product::getPrice).reversed()).limit(5).toList();
+        List<Product> expansiveProduct = lista1.stream().sorted(Comparator.comparingDouble(Product::getPrice).reversed()).limit(5).toList();
 
         expansiveProduct.forEach(System.out::println);
 
@@ -120,7 +120,10 @@ public class Application {
 
         System.out.println("-----------------Lezione U4S2L4 Es.5---------------");
 
-        Map<String,Double> sommaProdottiPerCategoria= lista1.stream().collect(Collectors.groupingBy(Product::getCategory, Collectors.summingDouble(Product::getPrice)));
-        sommaProdottiPerCategoria.forEach((category, totale) ->System.out.println(category + " - "+ totale));
+        Map<String, Double> sommaProdottiPerCategoria = lista1.stream().collect(Collectors.groupingBy(Product::getCategory, Collectors.summingDouble(Product::getPrice)));
+        sommaProdottiPerCategoria.forEach((category, totale) -> System.out.println(category + " - " + totale));
+
+        File file = new File("src/info.txt");
+        
     }
 }
