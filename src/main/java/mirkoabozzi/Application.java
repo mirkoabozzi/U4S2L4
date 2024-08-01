@@ -48,8 +48,8 @@ public class Application {
         lista3.add(product4);
 
         List<Product> lista4 = new ArrayList<>();
-        lista3.add(product4);
-        lista3.add(product5);
+        lista4.add(product4);
+        lista4.add(product5);
 
         Order order1 = new Order("confermato", today, lista1, cliente1);
         Order order2 = new Order("confermato", today, lista2, cliente2);
@@ -99,8 +99,9 @@ public class Application {
 
         System.out.println("-----------------Lezione U4S2L4 Es.2---------------");
 
-//        Map<Customer,Double> venditePerCliente = orderList
+        Map<Customer,Double> venditePerCliente = orderList.stream().collect(Collectors.groupingBy(Order::getCustomer, Collectors.summingDouble(order-> order.getProducts().stream().mapToDouble(product->product.getPrice()).sum())));
 
+        System.out.println(venditePerCliente);
 
 
         System.out.println("-----------------Lezione U4S2L4 Es.3---------------");
